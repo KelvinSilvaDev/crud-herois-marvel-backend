@@ -28,7 +28,7 @@ export class HeroesService {
       this.logger.log(`Hero created with ID ${newHero.id}`);
       return newHero;
     } catch (error) {
-      this.logger.error('Failed to create hero', error.message);
+      this.logger.error('Failed to create hero', (error as Error)?.message);
       throw error;
     }
   }
@@ -48,7 +48,7 @@ export class HeroesService {
       this.logger.log('Retrieved all heroes from database');
       return heroes;
     } catch (error) {
-      this.logger.error('Failed to retrieve heroes', error.message);
+      this.logger.error('Failed to retrieve heroes', (error as Error)?.message);
       throw error;
     }
   }
@@ -65,7 +65,10 @@ export class HeroesService {
       this.logger.log(`Hero with ID ${id} retrieved`);
       return hero;
     } catch (error) {
-      this.logger.error(`Failed to find hero with ID ${id}`, error.message);
+      this.logger.error(
+        `Failed to find hero with ID ${id}`,
+        (error as Error)?.message,
+      );
       throw error;
     }
   }
@@ -87,7 +90,10 @@ export class HeroesService {
       this.logger.log(`Hero with ID ${id} updated`);
       return updatedHero;
     } catch (error) {
-      this.logger.error(`Failed to update hero with ID ${id}`, error.message);
+      this.logger.error(
+        `Failed to update hero with ID ${id}`,
+        (error as Error)?.message,
+      );
       throw error;
     }
   }
@@ -104,7 +110,10 @@ export class HeroesService {
       await this.prisma.hero.delete({ where: { id } });
       this.logger.log(`Hero with ID ${id} deleted`);
     } catch (error) {
-      this.logger.error(`Failed to delete hero with ID ${id}`, error.message);
+      this.logger.error(
+        `Failed to delete hero with ID ${id}`,
+        (error as Error)?.message,
+      );
       throw error;
     }
   }

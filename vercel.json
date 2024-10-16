@@ -1,8 +1,9 @@
 {
+    "version": 2,
     "builds": [
 
         {
-            "src": "src/main.ts",
+            "src": "dist/main.js",
             "use": "@vercel/node"
         }
     ],
@@ -10,7 +11,12 @@
 
         {
             "src": "/api/(.*)",
-            "dest": "src/main.ts"
+            "dest": "dist/main.js"
         }
-    ]
+    ],
+    "hooks": {
+        "build": {
+            "command": "npm run vercel-build"
+        }
+    }
 }
