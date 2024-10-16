@@ -13,10 +13,5 @@
             "src": "/api/(.*)",
             "dest": "dist/main.js"
         }
-    ],
-    "hooks": {
-        "build": {
-            "command": "npm run vercel-build"
-        }
-    }
+    ]
 }
