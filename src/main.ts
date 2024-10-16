@@ -29,6 +29,8 @@ async function bootstrap() {
   await app.init();
 }
 
-bootstrap();
+bootstrap().catch((err) => {
+  console.error('Error during bootstrap:', err);
+});
 
 export default server;
